@@ -2,19 +2,21 @@
 /* eslint-disable */
 //  This file was automatically generated and should not be edited.
 
-export type CreateTodoInput = {
+export type CreatePostInput = {
   id?: string | null,
-  name: string,
-  description?: string | null,
+  title: string,
+  content: string,
+  blogID: string,
   _version?: number | null,
 };
 
-export type ModelTodoConditionInput = {
-  name?: ModelStringInput | null,
-  description?: ModelStringInput | null,
-  and?: Array< ModelTodoConditionInput | null > | null,
-  or?: Array< ModelTodoConditionInput | null > | null,
-  not?: ModelTodoConditionInput | null,
+export type ModelPostConditionInput = {
+  title?: ModelStringInput | null,
+  content?: ModelStringInput | null,
+  blogID?: ModelIDInput | null,
+  and?: Array< ModelPostConditionInput | null > | null,
+  or?: Array< ModelPostConditionInput | null > | null,
+  not?: ModelPostConditionInput | null,
 };
 
 export type ModelStringInput = {
@@ -57,39 +59,6 @@ export type ModelSizeInput = {
   between?: Array< number | null > | null,
 };
 
-export type Todo = {
-  __typename: "Todo",
-  id: string,
-  name: string,
-  description?: string | null,
-  createdAt: string,
-  updatedAt: string,
-  _version: number,
-  _deleted?: boolean | null,
-  _lastChangedAt: number,
-};
-
-export type UpdateTodoInput = {
-  id: string,
-  name?: string | null,
-  description?: string | null,
-  _version?: number | null,
-};
-
-export type DeleteTodoInput = {
-  id: string,
-  _version?: number | null,
-};
-
-export type ModelTodoFilterInput = {
-  id?: ModelIDInput | null,
-  name?: ModelStringInput | null,
-  description?: ModelStringInput | null,
-  and?: Array< ModelTodoFilterInput | null > | null,
-  or?: Array< ModelTodoFilterInput | null > | null,
-  not?: ModelTodoFilterInput | null,
-};
-
 export type ModelIDInput = {
   ne?: string | null,
   eq?: string | null,
@@ -106,24 +75,112 @@ export type ModelIDInput = {
   size?: ModelSizeInput | null,
 };
 
-export type ModelTodoConnection = {
-  __typename: "ModelTodoConnection",
-  items:  Array<Todo | null >,
+export type Post = {
+  __typename: "Post",
+  id: string,
+  title: string,
+  content: string,
+  blogID: string,
+  createdAt: string,
+  updatedAt: string,
+  _version: number,
+  _deleted?: boolean | null,
+  _lastChangedAt: number,
+};
+
+export type UpdatePostInput = {
+  id: string,
+  title?: string | null,
+  content?: string | null,
+  blogID?: string | null,
+  _version?: number | null,
+};
+
+export type DeletePostInput = {
+  id: string,
+  _version?: number | null,
+};
+
+export type CreateBlogInput = {
+  id?: string | null,
+  name: string,
+  _version?: number | null,
+};
+
+export type ModelBlogConditionInput = {
+  name?: ModelStringInput | null,
+  and?: Array< ModelBlogConditionInput | null > | null,
+  or?: Array< ModelBlogConditionInput | null > | null,
+  not?: ModelBlogConditionInput | null,
+};
+
+export type Blog = {
+  __typename: "Blog",
+  id: string,
+  name: string,
+  Posts?: ModelPostConnection | null,
+  createdAt: string,
+  updatedAt: string,
+  _version: number,
+  _deleted?: boolean | null,
+  _lastChangedAt: number,
+};
+
+export type ModelPostConnection = {
+  __typename: "ModelPostConnection",
+  items:  Array<Post | null >,
   nextToken?: string | null,
   startedAt?: number | null,
 };
 
-export type CreateTodoMutationVariables = {
-  input: CreateTodoInput,
-  condition?: ModelTodoConditionInput | null,
+export type UpdateBlogInput = {
+  id: string,
+  name?: string | null,
+  _version?: number | null,
 };
 
-export type CreateTodoMutation = {
-  createTodo?:  {
-    __typename: "Todo",
+export type DeleteBlogInput = {
+  id: string,
+  _version?: number | null,
+};
+
+export type ModelPostFilterInput = {
+  id?: ModelIDInput | null,
+  title?: ModelStringInput | null,
+  content?: ModelStringInput | null,
+  blogID?: ModelIDInput | null,
+  and?: Array< ModelPostFilterInput | null > | null,
+  or?: Array< ModelPostFilterInput | null > | null,
+  not?: ModelPostFilterInput | null,
+};
+
+export type ModelBlogFilterInput = {
+  id?: ModelIDInput | null,
+  name?: ModelStringInput | null,
+  and?: Array< ModelBlogFilterInput | null > | null,
+  or?: Array< ModelBlogFilterInput | null > | null,
+  not?: ModelBlogFilterInput | null,
+};
+
+export type ModelBlogConnection = {
+  __typename: "ModelBlogConnection",
+  items:  Array<Blog | null >,
+  nextToken?: string | null,
+  startedAt?: number | null,
+};
+
+export type CreatePostMutationVariables = {
+  input: CreatePostInput,
+  condition?: ModelPostConditionInput | null,
+};
+
+export type CreatePostMutation = {
+  createPost?:  {
+    __typename: "Post",
     id: string,
-    name: string,
-    description?: string | null,
+    title: string,
+    content: string,
+    blogID: string,
     createdAt: string,
     updatedAt: string,
     _version: number,
@@ -132,17 +189,18 @@ export type CreateTodoMutation = {
   } | null,
 };
 
-export type UpdateTodoMutationVariables = {
-  input: UpdateTodoInput,
-  condition?: ModelTodoConditionInput | null,
+export type UpdatePostMutationVariables = {
+  input: UpdatePostInput,
+  condition?: ModelPostConditionInput | null,
 };
 
-export type UpdateTodoMutation = {
-  updateTodo?:  {
-    __typename: "Todo",
+export type UpdatePostMutation = {
+  updatePost?:  {
+    __typename: "Post",
     id: string,
-    name: string,
-    description?: string | null,
+    title: string,
+    content: string,
+    blogID: string,
     createdAt: string,
     updatedAt: string,
     _version: number,
@@ -151,17 +209,18 @@ export type UpdateTodoMutation = {
   } | null,
 };
 
-export type DeleteTodoMutationVariables = {
-  input: DeleteTodoInput,
-  condition?: ModelTodoConditionInput | null,
+export type DeletePostMutationVariables = {
+  input: DeletePostInput,
+  condition?: ModelPostConditionInput | null,
 };
 
-export type DeleteTodoMutation = {
-  deleteTodo?:  {
-    __typename: "Todo",
+export type DeletePostMutation = {
+  deletePost?:  {
+    __typename: "Post",
     id: string,
-    name: string,
-    description?: string | null,
+    title: string,
+    content: string,
+    blogID: string,
     createdAt: string,
     updatedAt: string,
     _version: number,
@@ -170,16 +229,122 @@ export type DeleteTodoMutation = {
   } | null,
 };
 
-export type GetTodoQueryVariables = {
+export type CreateBlogMutationVariables = {
+  input: CreateBlogInput,
+  condition?: ModelBlogConditionInput | null,
+};
+
+export type CreateBlogMutation = {
+  createBlog?:  {
+    __typename: "Blog",
+    id: string,
+    name: string,
+    Posts?:  {
+      __typename: "ModelPostConnection",
+      items:  Array< {
+        __typename: "Post",
+        id: string,
+        title: string,
+        content: string,
+        blogID: string,
+        createdAt: string,
+        updatedAt: string,
+        _version: number,
+        _deleted?: boolean | null,
+        _lastChangedAt: number,
+      } | null >,
+      nextToken?: string | null,
+      startedAt?: number | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+    _version: number,
+    _deleted?: boolean | null,
+    _lastChangedAt: number,
+  } | null,
+};
+
+export type UpdateBlogMutationVariables = {
+  input: UpdateBlogInput,
+  condition?: ModelBlogConditionInput | null,
+};
+
+export type UpdateBlogMutation = {
+  updateBlog?:  {
+    __typename: "Blog",
+    id: string,
+    name: string,
+    Posts?:  {
+      __typename: "ModelPostConnection",
+      items:  Array< {
+        __typename: "Post",
+        id: string,
+        title: string,
+        content: string,
+        blogID: string,
+        createdAt: string,
+        updatedAt: string,
+        _version: number,
+        _deleted?: boolean | null,
+        _lastChangedAt: number,
+      } | null >,
+      nextToken?: string | null,
+      startedAt?: number | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+    _version: number,
+    _deleted?: boolean | null,
+    _lastChangedAt: number,
+  } | null,
+};
+
+export type DeleteBlogMutationVariables = {
+  input: DeleteBlogInput,
+  condition?: ModelBlogConditionInput | null,
+};
+
+export type DeleteBlogMutation = {
+  deleteBlog?:  {
+    __typename: "Blog",
+    id: string,
+    name: string,
+    Posts?:  {
+      __typename: "ModelPostConnection",
+      items:  Array< {
+        __typename: "Post",
+        id: string,
+        title: string,
+        content: string,
+        blogID: string,
+        createdAt: string,
+        updatedAt: string,
+        _version: number,
+        _deleted?: boolean | null,
+        _lastChangedAt: number,
+      } | null >,
+      nextToken?: string | null,
+      startedAt?: number | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+    _version: number,
+    _deleted?: boolean | null,
+    _lastChangedAt: number,
+  } | null,
+};
+
+export type GetPostQueryVariables = {
   id: string,
 };
 
-export type GetTodoQuery = {
-  getTodo?:  {
-    __typename: "Todo",
+export type GetPostQuery = {
+  getPost?:  {
+    __typename: "Post",
     id: string,
-    name: string,
-    description?: string | null,
+    title: string,
+    content: string,
+    blogID: string,
     createdAt: string,
     updatedAt: string,
     _version: number,
@@ -188,20 +353,21 @@ export type GetTodoQuery = {
   } | null,
 };
 
-export type ListTodosQueryVariables = {
-  filter?: ModelTodoFilterInput | null,
+export type ListPostsQueryVariables = {
+  filter?: ModelPostFilterInput | null,
   limit?: number | null,
   nextToken?: string | null,
 };
 
-export type ListTodosQuery = {
-  listTodos?:  {
-    __typename: "ModelTodoConnection",
+export type ListPostsQuery = {
+  listPosts?:  {
+    __typename: "ModelPostConnection",
     items:  Array< {
-      __typename: "Todo",
+      __typename: "Post",
       id: string,
-      name: string,
-      description?: string | null,
+      title: string,
+      content: string,
+      blogID: string,
       createdAt: string,
       updatedAt: string,
       _version: number,
@@ -213,21 +379,22 @@ export type ListTodosQuery = {
   } | null,
 };
 
-export type SyncTodosQueryVariables = {
-  filter?: ModelTodoFilterInput | null,
+export type SyncPostsQueryVariables = {
+  filter?: ModelPostFilterInput | null,
   limit?: number | null,
   nextToken?: string | null,
   lastSync?: number | null,
 };
 
-export type SyncTodosQuery = {
-  syncTodos?:  {
-    __typename: "ModelTodoConnection",
+export type SyncPostsQuery = {
+  syncPosts?:  {
+    __typename: "ModelPostConnection",
     items:  Array< {
-      __typename: "Todo",
+      __typename: "Post",
       id: string,
-      name: string,
-      description?: string | null,
+      title: string,
+      content: string,
+      blogID: string,
       createdAt: string,
       updatedAt: string,
       _version: number,
@@ -239,12 +406,32 @@ export type SyncTodosQuery = {
   } | null,
 };
 
-export type OnCreateTodoSubscription = {
-  onCreateTodo?:  {
-    __typename: "Todo",
+export type GetBlogQueryVariables = {
+  id: string,
+};
+
+export type GetBlogQuery = {
+  getBlog?:  {
+    __typename: "Blog",
     id: string,
     name: string,
-    description?: string | null,
+    Posts?:  {
+      __typename: "ModelPostConnection",
+      items:  Array< {
+        __typename: "Post",
+        id: string,
+        title: string,
+        content: string,
+        blogID: string,
+        createdAt: string,
+        updatedAt: string,
+        _version: number,
+        _deleted?: boolean | null,
+        _lastChangedAt: number,
+      } | null >,
+      nextToken?: string | null,
+      startedAt?: number | null,
+    } | null,
     createdAt: string,
     updatedAt: string,
     _version: number,
@@ -253,12 +440,72 @@ export type OnCreateTodoSubscription = {
   } | null,
 };
 
-export type OnUpdateTodoSubscription = {
-  onUpdateTodo?:  {
-    __typename: "Todo",
+export type ListBlogsQueryVariables = {
+  filter?: ModelBlogFilterInput | null,
+  limit?: number | null,
+  nextToken?: string | null,
+};
+
+export type ListBlogsQuery = {
+  listBlogs?:  {
+    __typename: "ModelBlogConnection",
+    items:  Array< {
+      __typename: "Blog",
+      id: string,
+      name: string,
+      Posts?:  {
+        __typename: "ModelPostConnection",
+        nextToken?: string | null,
+        startedAt?: number | null,
+      } | null,
+      createdAt: string,
+      updatedAt: string,
+      _version: number,
+      _deleted?: boolean | null,
+      _lastChangedAt: number,
+    } | null >,
+    nextToken?: string | null,
+    startedAt?: number | null,
+  } | null,
+};
+
+export type SyncBlogsQueryVariables = {
+  filter?: ModelBlogFilterInput | null,
+  limit?: number | null,
+  nextToken?: string | null,
+  lastSync?: number | null,
+};
+
+export type SyncBlogsQuery = {
+  syncBlogs?:  {
+    __typename: "ModelBlogConnection",
+    items:  Array< {
+      __typename: "Blog",
+      id: string,
+      name: string,
+      Posts?:  {
+        __typename: "ModelPostConnection",
+        nextToken?: string | null,
+        startedAt?: number | null,
+      } | null,
+      createdAt: string,
+      updatedAt: string,
+      _version: number,
+      _deleted?: boolean | null,
+      _lastChangedAt: number,
+    } | null >,
+    nextToken?: string | null,
+    startedAt?: number | null,
+  } | null,
+};
+
+export type OnCreatePostSubscription = {
+  onCreatePost?:  {
+    __typename: "Post",
     id: string,
-    name: string,
-    description?: string | null,
+    title: string,
+    content: string,
+    blogID: string,
     createdAt: string,
     updatedAt: string,
     _version: number,
@@ -267,12 +514,118 @@ export type OnUpdateTodoSubscription = {
   } | null,
 };
 
-export type OnDeleteTodoSubscription = {
-  onDeleteTodo?:  {
-    __typename: "Todo",
+export type OnUpdatePostSubscription = {
+  onUpdatePost?:  {
+    __typename: "Post",
+    id: string,
+    title: string,
+    content: string,
+    blogID: string,
+    createdAt: string,
+    updatedAt: string,
+    _version: number,
+    _deleted?: boolean | null,
+    _lastChangedAt: number,
+  } | null,
+};
+
+export type OnDeletePostSubscription = {
+  onDeletePost?:  {
+    __typename: "Post",
+    id: string,
+    title: string,
+    content: string,
+    blogID: string,
+    createdAt: string,
+    updatedAt: string,
+    _version: number,
+    _deleted?: boolean | null,
+    _lastChangedAt: number,
+  } | null,
+};
+
+export type OnCreateBlogSubscription = {
+  onCreateBlog?:  {
+    __typename: "Blog",
     id: string,
     name: string,
-    description?: string | null,
+    Posts?:  {
+      __typename: "ModelPostConnection",
+      items:  Array< {
+        __typename: "Post",
+        id: string,
+        title: string,
+        content: string,
+        blogID: string,
+        createdAt: string,
+        updatedAt: string,
+        _version: number,
+        _deleted?: boolean | null,
+        _lastChangedAt: number,
+      } | null >,
+      nextToken?: string | null,
+      startedAt?: number | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+    _version: number,
+    _deleted?: boolean | null,
+    _lastChangedAt: number,
+  } | null,
+};
+
+export type OnUpdateBlogSubscription = {
+  onUpdateBlog?:  {
+    __typename: "Blog",
+    id: string,
+    name: string,
+    Posts?:  {
+      __typename: "ModelPostConnection",
+      items:  Array< {
+        __typename: "Post",
+        id: string,
+        title: string,
+        content: string,
+        blogID: string,
+        createdAt: string,
+        updatedAt: string,
+        _version: number,
+        _deleted?: boolean | null,
+        _lastChangedAt: number,
+      } | null >,
+      nextToken?: string | null,
+      startedAt?: number | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+    _version: number,
+    _deleted?: boolean | null,
+    _lastChangedAt: number,
+  } | null,
+};
+
+export type OnDeleteBlogSubscription = {
+  onDeleteBlog?:  {
+    __typename: "Blog",
+    id: string,
+    name: string,
+    Posts?:  {
+      __typename: "ModelPostConnection",
+      items:  Array< {
+        __typename: "Post",
+        id: string,
+        title: string,
+        content: string,
+        blogID: string,
+        createdAt: string,
+        updatedAt: string,
+        _version: number,
+        _deleted?: boolean | null,
+        _lastChangedAt: number,
+      } | null >,
+      nextToken?: string | null,
+      startedAt?: number | null,
+    } | null,
     createdAt: string,
     updatedAt: string,
     _version: number,

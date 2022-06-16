@@ -1,0 +1,15 @@
+{
+  "resourceName": "amplifychallengestore",
+  "policyUUID": "dd81bb0e",
+  "bucketName": "amplifychallengestore",
+  "storageAccess": "authAndGuest",
+  "guestAccess": [
+    "READ"
+  ],
+  "authAccess": [
+    "CREATE_AND_UPDATE",
+    "READ"
+  ],
+  "triggerFunction": "S3Triggerfb64acfc",
+  "groupAccess": {}
+}

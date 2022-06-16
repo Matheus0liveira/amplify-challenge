@@ -14,13 +14,18 @@
     "categories": {
       "auth": {
         "blogb3c3e1ad": {},
-        "blog05b220ca": {}
+        "blog05b220ca": {},
+        "true": {}
       },
       "function": {
         "blogb3c3e1adCustomMessage": {
           "REDIRECTURL": "http://localhost:3000/",
           "EMAILSUBJECT": "Ative a sua conta no blog amplify-challenge",
           "EMAILMESSAGE": "Utilize o código ou o link abaixo para confirmar sua conta no blog challenge amplify"
+        },
+        "S3Triggerfb64acfc": {
+          "deploymentBucketName": "amplify-blog-local-212127-deployment",
+          "s3Key": "amplify-builds/S3Triggerfb64acfc-7a78636e6e6a46435259-build.zip"
         }
       }
     }
