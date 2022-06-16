@@ -8,7 +8,7 @@ export default function AppRoutes() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/new post" element={<Editor />} />
+        <Route path="/new-post" element={<Editor />} />
         <Route path="/post/:id" element={<Post />} />
         <Route path="*" element={<Home />} />
       </Routes>
