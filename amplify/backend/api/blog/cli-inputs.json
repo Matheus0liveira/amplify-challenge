@@ -3,15 +3,21 @@
   "serviceConfiguration": {
     "apiName": "blog",
     "serviceName": "AppSync",
-    "gqlSchemaPath": "/home/matheus0liveira/Documents/www/github/serveless-challenge/blog/amplify/backend/api/blog/schema.graphql",
+    "gqlSchemaPath": "/tmp/amplify-e3908af1-7b53-4059-b1e2-d441778c96d1/amplify/backend/api/blog/schema.graphql",
     "defaultAuthType": {
       "mode": "API_KEY",
-      "expirationTime": 7
+      "keyDescription": "api key description",
+      "expirationTime": 30
     },
     "conflictResolution": {
       "defaultResolutionStrategy": {
         "type": "AUTOMERGE"
       }
-    }
+    },
+    "additionalAuthTypes": [
+      {
+        "mode": "AWS_IAM"
+      }
+    ]
   }
 }

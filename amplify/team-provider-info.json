@@ -10,6 +10,19 @@
       "StackName": "amplify-blog-local-212127",
       "StackId": "arn:aws:cloudformation:us-east-1:148198459315:stack/amplify-blog-local-212127/1af69600-ec41-11ec-be56-0acef3a746cf",
       "AmplifyAppId": "d1vrglp7gnb1i1"
+    },
+    "categories": {
+      "auth": {
+        "blogb3c3e1ad": {},
+        "blog05b220ca": {}
+      },
+      "function": {
+        "blogb3c3e1adCustomMessage": {
+          "REDIRECTURL": "http://localhost:3000/",
+          "EMAILSUBJECT": "Ative a sua conta no blog amplify-challenge",
+          "EMAILMESSAGE": "Utilize o código ou o link abaixo para confirmar sua conta no blog challenge amplify"
+        }
+      }
     }
   }
 }
