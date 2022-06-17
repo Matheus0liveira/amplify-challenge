@@ -9,6 +9,8 @@ export const getPost = /* GraphQL */ `
       title
       content
       blogID
+      authorName
+      thumbnailKey
       createdAt
       updatedAt
       _version
@@ -29,6 +31,8 @@ export const listPosts = /* GraphQL */ `
         title
         content
         blogID
+        authorName
+        thumbnailKey
         createdAt
         updatedAt
         _version
@@ -58,6 +62,8 @@ export const syncPosts = /* GraphQL */ `
         title
         content
         blogID
+        authorName
+        thumbnailKey
         createdAt
         updatedAt
         _version
@@ -75,17 +81,6 @@ export const getBlog = /* GraphQL */ `
       id
       name
       Posts {
-        items {
-          id
-          title
-          content
-          blogID
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
-        }
         nextToken
         startedAt
       }
@@ -107,10 +102,6 @@ export const listBlogs = /* GraphQL */ `
       items {
         id
         name
-        Posts {
-          nextToken
-          startedAt
-        }
         createdAt
         updatedAt
         _version
@@ -138,10 +129,6 @@ export const syncBlogs = /* GraphQL */ `
       items {
         id
         name
-        Posts {
-          nextToken
-          startedAt
-        }
         createdAt
         updatedAt
         _version

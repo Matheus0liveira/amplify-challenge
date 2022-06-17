@@ -6,6 +6,10 @@ export const Container = styled.div`
 
   img {
     margin-bottom: 2rem;
+    width: 100%;
+    max-width: 100%;
+    max-height: 400px;
+    object-fit: cover;
   }
   h1 {
     margin-bottom: 1rem;

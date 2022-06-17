@@ -56,7 +56,6 @@ function Editor() {
             content,
             thumbnailKey: key,
             authorName: user.attributes.name,
-            blogID: "1d1c66c9-14af-4767-a450-4358ac04ca4d",
           },
         })
       );

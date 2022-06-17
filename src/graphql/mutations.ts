@@ -12,6 +12,8 @@ export const createPost = /* GraphQL */ `
       title
       content
       blogID
+      authorName
+      thumbnailKey
       createdAt
       updatedAt
       _version
@@ -30,6 +32,8 @@ export const updatePost = /* GraphQL */ `
       title
       content
       blogID
+      authorName
+      thumbnailKey
       createdAt
       updatedAt
       _version
@@ -48,6 +52,8 @@ export const deletePost = /* GraphQL */ `
       title
       content
       blogID
+      authorName
+      thumbnailKey
       createdAt
       updatedAt
       _version
@@ -65,17 +71,6 @@ export const createBlog = /* GraphQL */ `
       id
       name
       Posts {
-        items {
-          id
-          title
-          content
-          blogID
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
-        }
         nextToken
         startedAt
       }
@@ -96,17 +91,6 @@ export const updateBlog = /* GraphQL */ `
       id
       name
       Posts {
-        items {
-          id
-          title
-          content
-          blogID
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
-        }
         nextToken
         startedAt
       }
@@ -127,17 +111,6 @@ export const deleteBlog = /* GraphQL */ `
       id
       name
       Posts {
-        items {
-          id
-          title
-          content
-          blogID
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
-        }
         nextToken
         startedAt
       }

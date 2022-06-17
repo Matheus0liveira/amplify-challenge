@@ -18,6 +18,7 @@ export default function Post() {
         const { data } = (await API.graphql(
           graphqlOperation(getPost, { id: params.id })
         )) as any;
+
         const thumbnail = await Storage.get(data.getPost.thumbnailKey);
         setPost({ ...data.getPost, thumbnailUrl: thumbnail });
       } catch (e) {
@@ -39,7 +40,7 @@ export default function Post() {
         <Button onClick={handleGoToHome}>Voltar aos posts</Button>
         <Button onClick={handleGoToPostCreation}>Criar post</Button>
       </S.ButtonContainer>
-      <img src={post.thumbnailUrl} alt="" />
+      <img src={post.thumbnailUrl} alt="Capa" />
       <h1>{post.title}</h1>
       <div dangerouslySetInnerHTML={{ __html: sanitize(post?.content) }}></div>
     </S.Container>
