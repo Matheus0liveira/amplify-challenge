@@ -1,9 +1,11 @@
 import { withAuthenticator } from "@aws-amplify/ui-react";
+import { API, Auth, graphqlOperation, Storage } from "aws-amplify";
 import { Button, InputRow } from "aws-amplify-react";
 import { ChangeEvent, useState } from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import { useNavigate } from "react-router-dom";
+import { createPost } from "../../graphql/mutations";
 
 import * as S from "./styles";
 
@@ -29,6 +31,7 @@ function Editor() {
   function handleThumbnailChange(e: ChangeEvent<HTMLInputElement>) {
     if (!e.target.files?.length) return;
     const file = e.target.files[0];
+    console.log(file);
     setThumbnail({
       file,
       filename: file.name,
@@ -36,7 +39,38 @@ function Editor() {
     });
   }
 
-  function handlePostCreation() {}
+  async function handlePostCreation() {
+    if (!thumbnail) return;
+    try {
+      const { key } = await Storage.put(thumbnail.filename, thumbnail.file);
+      const user = await Auth.currentAuthenticatedUser();
+      console.log({
+        key,
+        user,
+      });
+
+      await API.graphql(
+        graphqlOperation(createPost, {
+          input: {
+            title,
+            content,
+            thumbnailKey: key,
+            authorName: user.attributes.name,
+            blogID: "1d1c66c9-14af-4767-a450-4358ac04ca4d",
+          },
+        })
+      );
+
+      navigate("/posts");
+    } catch (e) {
+      console.log({ e });
+    }
+
+    // const result = await API.graphql(
+    //   graphqlOperation(getBlog, { id: process.env.REACT_APP_BLOG_ID })
+    // );
+    // console.log(result);
+  }
   function handleGoToHome() {
     navigate("/");
   }
@@ -52,9 +86,9 @@ function Editor() {
       )}
       <InputRow
         placeholder="Capa"
-        value={title}
         onChange={handleThumbnailChange}
         type="file"
+        accept="image/png, image/jkpeg"
       />
       <InputRow
         placeholder="Título"

@@ -3,6 +3,8 @@ type Post @model @auth(rules: [{allow: public}]) {
   title: String!
   content: String!
   blogID: ID! @index(name: "byBlog")
+  authorName: String!
+  thumbnailKey: String
 }
 
 type Blog @model @auth(rules: [{allow: public}]) {
