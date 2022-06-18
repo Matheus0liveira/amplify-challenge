@@ -83,6 +83,12 @@ export const getBlog = /* GraphQL */ `
       Posts {
         nextToken
         startedAt
+        items {
+          id
+          title
+          authorName
+          thumbnailKey
+        }
       }
       createdAt
       updatedAt

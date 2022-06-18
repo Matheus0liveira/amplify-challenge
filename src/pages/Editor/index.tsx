@@ -6,8 +6,10 @@ import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import { useNavigate } from "react-router-dom";
 import { createPost } from "../../graphql/mutations";
+import { GraphQLResult } from "@aws-amplify/api-graphql";
 
 import * as S from "./styles";
+import { CreatePostMutation } from "../../API";
 
 type Thumbnail = {
   filename: string;
@@ -44,31 +46,23 @@ function Editor() {
     try {
       const { key } = await Storage.put(thumbnail.filename, thumbnail.file);
       const user = await Auth.currentAuthenticatedUser();
-      console.log({
-        key,
-        user,
-      });
 
-      await API.graphql(
+      (await API.graphql(
         graphqlOperation(createPost, {
           input: {
             title,
             content,
             thumbnailKey: key,
             authorName: user.attributes.name,
+            blogID: process.env.REACT_APP_BLOG_ID,
           },
         })
-      );
+      )) as GraphQLResult<CreatePostMutation>;
 
       navigate("/posts");
     } catch (e) {
       console.log({ e });
     }
-
-    // const result = await API.graphql(
-    //   graphqlOperation(getBlog, { id: process.env.REACT_APP_BLOG_ID })
-    // );
-    // console.log(result);
   }
   function handleGoToHome() {
     navigate("/");
